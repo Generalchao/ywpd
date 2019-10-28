@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>历史回单</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+	<!-- 引入样式文件 -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vant@2.2/lib/index.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+	<!-- 引入 Vue 和 Vant 的 JS 文件 -->
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vant@2.2/lib/vant.min.js"></script>
+</head>
+<body>
+	<header class="home_top_bar">
+		<h1 class="top_title">历史回单</h1>
+		<a class="left_btn" href=""><i class="icon-back"></i></a>
+		<div id="filter"></div>
+		<div class="filter_box">
+			<div class="cell">
+				<select>
+				  <option value ="volvo">所属镇</option>
+				  <option value ="saab">Saab</option>
+				  <option value="opel">Opel</option>
+				  <option value="audi">Audi</option>
+				</select>
+                <i class="icon-arrow_down"></i>
+            </div>
+			<div class="cell">
+                <input id="yw_status" type="date" value="" placeholder="工单状态">
+                <i class="icon-arrow_down"></i>
+            </div>
+			<div class="cell">
+                <input id="yw_status" type="date" value="" placeholder="工单状态">
+                <i class="icon-arrow_down"></i>
+            </div>
+        </div>
+	</header>
+
+
+	<div class="content_box home" id="orderList">
+		<div class="item" v-for="item in orderList">
+			<div class="titlebox">
+				<span class="area">{{item.area}}</span>
+				<p class="listTitle">{{item.title}}</p>
+			</div>
+			<div class="equ_info">
+				<span class="equ_tag">{{item.ip}}</span>
+				<span class="equ_tag">{{item.error_type}}</span>
+				<span class="equ_tag">{{item.equ}}</span>
+				<span class="equ_tag">{{item.number}}</span>
+			</div>
+			<div class="contact">
+				{{item.person}} {{item.phone}}
+			</div>
+			<span class="history_id">{{item.id}}</span>
+			<span class="time">持续：{{item.time}}<br/>派单：{{item.p_time}}<br/>回单：{{item.h_time}}</span>
+			<span class="status">{{item.status}}</span>
+		</div> 		 
+	</div>   
+
+	<script type="text/javascript" src="js/picker.city.js" ></script>	
+	<script type="text/javascript">
+
+		var app = new Vue({
+			el: '#orderList',
+			data: {
+				orderList:[{
+					area:'黄渡',
+					title:'6306736723黄渡 春意路118弄口 西HGFGGVHJK',
+					ip:'15.202.140.172',
+					error_type:'摄像头离线',
+					equ:'摄像机',
+					number:'271',
+					person:'张三',
+					id:'408288142',
+					phone:'18515154675',
+					time:'10小时3分钟',
+					p_time:'2019-02-03 12:20',
+					h_time:'2019-02-03 12:40',
+					status:'已回单'
+				}, {
+					area:'黄渡',
+					title:'6306736723黄渡 春意路118弄口',
+					ip:'15.202.140.172',
+					error_type:'摄像头离线',
+					equ:'摄像机',
+					number:'271',
+					person:'张三',
+					id:'408288142',
+					phone:'18515154675',
+					time:'10小时3分钟',
+					p_time:'2019-02-03 12:20',
+					h_time:'2019-02-03 12:40',
+					status:'已回单'
+				}, {
+					area:'黄渡',
+					title:'6306736723黄渡 春意路118弄口',
+					ip:'15.202.140.172',
+					error_type:'摄像头离线',
+					equ:'摄像机',
+					number:'271',
+					person:'张三',
+					id:'408288142',
+					phone:'18515154675',
+					time:'10小时3分钟',
+					p_time:'2019-02-03 12:20',
+					h_time:'2019-02-03 12:40',
+					status:'已回单'
+				}]
+			}
+		})
+
+
+
+
+
+
+	</script>	
+</body>
+</html>

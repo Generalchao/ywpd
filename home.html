@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>嘉定公安智能监控运维派单系统</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+	<link rel="stylesheet" type="text/css" href="css/weui.css">
+	<link rel="stylesheet" type="text/css" href="css/weui2.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script src="js/zepto.min.js"></script>
+	<script src="js/zepto.weui.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+	<header class="home_top_bar">
+		<a class="left_btn" id="menuBtn"><i class="icon-menu"></i></a>
+		<input class="search" type="" name="" placeholder="请输入工单号、设备名称、杆号">
+		<a href="" class="search_btn">搜索</a>
+		<div class="filter_box">
+			<div class="cell">
+                <input id="yw_type" type="text" value="" placeholder="所属镇">
+                <i class="icon-arrow_down"></i>
+            </div>
+			<div class="cell">
+                <input id="yw_status" type="text" value="" placeholder="工单状态">
+                <i class="icon-arrow_down"></i>
+            </div>
+        </div>
+	</header>
+
+	<!-- 侧边菜单 -->
+	<div class="left_menu" id="menu">
+		<div class="user_info">
+			<div class="user_avatar" style="background-image: url('img/avatar.png')"></div>
+			<div class="user_name">王伟</div>
+		</div>
+		<ul class="menu_list">
+			<li><i class="icon-history"></i>历史工单</li>
+			<li><i class="icon-settings"></i>设置</li>
+		</ul>
+	</div>
+	<div class="menu_mask" id="mask"></div>
+
+
+	<div class="content_box home" id="orderList">
+		<div class="item" v-for="item in orderList">
+			<div class="titlebox">
+				<span class="area">{{item.area}}</span>
+				<p class="listTitle">{{item.title}}</p>
+			</div>
+			<div class="equ_info">
+				<span class="equ_tag">{{item.ip}}</span>
+				<span class="equ_tag">{{item.error_type}}</span>
+				<span class="equ_tag">{{item.equ}}</span>
+				<span class="equ_tag">{{item.number}}</span>
+			</div>
+			<div class="contact">
+				{{item.person}} {{item.phone}}
+			</div>
+			<span class="time">已持续{{item.time}}</span>
+			<span class="status">{{item.status}}</span>
+		</div> 		 
+	</div>   
+
+	<script type="text/javascript" src="js/picker.city.js" ></script>	
+	<script type="text/javascript">
+
+		var app = new Vue({
+			el: '#orderList',
+			data: {
+				orderList:[{
+					area:'黄渡',
+					title:'6306736723黄渡 春意路118弄口 西HGFGGVHJK',
+					ip:'15.202.140.172',
+					error_type:'摄像头离线',
+					equ:'摄像机',
+					number:'271',
+					time:'10小时3分钟',
+					status:'待处理'
+				}, {
+					area:'黄渡',
+					title:'6306736723黄渡 春意路118弄口',
+					ip:'15.202.140.172',
+					error_type:'摄像头离线',
+					equ:'摄像机',
+					number:'271',
+					person:'张三',
+					phone:'18515154675',
+					time:'10小时3分钟',
+					status:'已指派'
+				}, {
+					area:'黄渡',
+					title:'6306736723黄渡 春意路118弄口',
+					ip:'15.202.140.172',
+					error_type:'摄像头离线',
+					equ:'摄像机',
+					number:'271',
+					time:'10小时3分钟',
+					status:'待处理'
+				}, {
+					area:'黄渡',
+					title:'6306736723黄渡 春意路118弄口',
+					ip:'15.202.140.172',
+					error_type:'摄像头离线',
+					equ:'摄像机',
+					number:'271',
+					time:'10小时3分钟',
+					status:'待处理'
+				}, {
+					area:'黄渡',
+					title:'6306736723黄渡 春意路118弄口',
+					ip:'15.202.140.172',
+					error_type:'摄像头离线',
+					equ:'摄像机',
+					number:'271',
+					time:'10小时3分钟',
+					status:'待处理'
+				}]
+			}
+		})
+
+
+		 $("#yw_type").picker({
+	        title: "请选择设备类型",
+	        cols: [
+	            {
+	                textAlign: 'center',
+	                values: ['全部','摄像机','立杆','服务器','交换机','管道']
+	            }
+	        ],
+	        onChange: function(p, v, dv) {
+	            console.log(p, v, dv);
+	        },
+	        onClose: function(p, v, d) {
+	            console.log("close");
+	        }
+	    });
+
+
+      var menuBtn = document.getElementById('menuBtn');
+      var menu = document.getElementById('menu');
+      var mask = document.getElementById('mask');
+
+      menuBtn.addEventListener('click',function(){
+      	menu.classList.add('show');
+      	mask.classList.add('show');
+      });
+
+      mask.addEventListener('click',function(){
+      	menu.classList.remove('show');
+      	mask.classList.remove('show');
+      });
+
+
+	</script>	
+</body>
+</html>

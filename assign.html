@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>指派</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+	<script src="js/zepto.min.js"></script>	
+	<!-- 引入样式文件 -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vant@2.2/lib/index.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+	<!-- 引入 Vue 和 Vant 的 JS 文件 -->
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vant@2.2/lib/vant.min.js"></script>
+</head>
+<body>
+	<header class="top_bar">
+		<h1 class="top_title">指派</h1>
+		<a class="left_btn" href=""><i class="icon-back"></i></a>
+	</header>
+
+	<div class="content_box" id="assignlist">
+		<div class="item" @click="onClickConfirm" v-for="item in assignlist" >
+			<p class="assign_id">{{item.assign_id}}</p>
+			<span class="assign_name">{{item.disc}}</span>
+			<p class="assign_info">{{item.phone}} | {{item.email}}</p>
+		</div> 		 
+	</div>   	
+
+	<script type="text/javascript">
+		var app = new Vue({
+			el: '#assignlist',
+			data: {
+				assignlist:[{
+					assign_id:'Elmer Young',
+					disc:'张三',
+					phone:'18557568655',
+					email:'theresa.deckow@yahoo.com',
+				}, {
+					assign_id:'jiebao002',
+					disc:'李四',
+					phone:'18557568655',
+					email:'theresa.deckow@yahoo.com',
+				}, {
+					assign_id:'gdjywu003',
+					disc:'王五',
+					phone:'18557568655',
+					email:'theresa.deckow@yahoo.com',
+				}, {
+					assign_id:'GJGJ087',
+					disc:'赵六',
+					phone:'18557568655',
+					email:'theresa.deckow@yahoo.com',
+				}]
+			},
+
+			methods:{
+				onClickConfirm() {
+			      this.$dialog.confirm({
+			        title: '指派确认',
+			        message: '你确认将工单指派给“dangqi001”吗？'
+			      }).then(() => {
+			        // on confirm
+			      }).catch(() => {
+			        // on cancel
+			      });
+			  },
+			}
+		})
+
+
+	</script>	
+</body>
+</html>
