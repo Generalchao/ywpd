@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>运维派单</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+	<!-- 引入样式文件 -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vant@2.2/lib/index.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+	<!-- 引入 Vue 和 Vant 的 JS 文件 -->
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vant@2.2/lib/vant.min.js"></script>
+</head>
+<body>
+	<header class="top_bar">
+		<h1 class="top_title">运维派单</h1>
+	</header>
+
+
+	<div class="content_box" id="app">
+		<van-cell-group>
+		<van-cell title="首页" is-link url="home.html" /></van-cell>
+		<van-cell title="详情页" is-link url="order_detail.html" /></van-cell>
+		<van-cell title="分配页" is-link url="assign.html" /></van-cell>
+		<van-cell title="回单页" is-link url="respond.html" /></van-cell>
+		<van-cell title="历史页" is-link url="history.html" /></van-cell>
+		<van-cell title="历史详情页" is-link url="history_order_detail.html" /></van-cell>
+	</van-cell-group>
+	</div>   
+
+	<script type="text/javascript" src="js/picker.city.js" ></script>	
+	<script type="text/javascript">
+
+		var app = new Vue({
+			el: '#app',
+			template:'',
+			
+		})
+
+
+
+
+
+
+	</script>	
+</body>
+</html>
