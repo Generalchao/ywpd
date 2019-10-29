@@ -13,33 +13,69 @@
 	<script src="https://cdn.jsdelivr.net/npm/vant@2.2/lib/vant.min.js"></script>
 </head>
 <body>
-	<header class="home_top_bar">
+	<header class="home_top_bar" id="app">
 		<h1 class="top_title">历史回单</h1>
 		<a class="left_btn" href=""><i class="icon-back"></i></a>
 		<div id="filter"></div>
 		<div class="filter_box">
+
 			<div class="cell">
-				<select>
-				  <option value ="volvo">所属镇</option>
-				  <option value ="saab">Saab</option>
-				  <option value="opel">Opel</option>
-				  <option value="audi">Audi</option>
-				</select>
+				<van-field
+					readonly
+					clickable
+					:value="value"
+					placeholder="所属镇"
+					@click="showPicker = true"
+				></van-field>
+				<van-popup v-model="showPicker" position="bottom">
+				<van-picker
+					show-toolbar
+					:columns="columns"
+					@cancel="showPicker = false"
+					@confirm="onConfirm"
+				/>
+				</van-popup>
                 <i class="icon-arrow_down"></i>
             </div>
+
 			<div class="cell">
-                <input id="yw_status" type="date" value="" placeholder="工单状态">
+				<van-field
+					readonly
+					clickable
+					:value="value"
+					placeholder="派单时间"
+					@click="showdatePicker = true"
+				></van-field>
                 <i class="icon-arrow_down"></i>
             </div>
+
 			<div class="cell">
-                <input id="yw_status" type="date" value="" placeholder="工单状态">
+				<van-field
+					readonly
+					clickable
+					:value="value"
+					placeholder="回单时间"
+					@click="showdatePicker = true"
+				></van-field>
                 <i class="icon-arrow_down"></i>
-            </div>
+            </div>            
+
+
+			<van-popup v-model="showdatePicker" position="bottom">
+			<van-datetime-picker
+				v-model="currentDate"
+				type="date"
+				:min-date="minDate"
+				@cancel="showdatePicker = false"
+				@confirm="onConfirm2"
+			/>
+			</van-popup>
+
         </div>
 	</header>
 
 
-	<div class="content_box home" id="orderList">
+	<div class="content_box" id="orderList">
 		<div class="item" v-for="item in orderList">
 			<div class="titlebox">
 				<span class="area">{{item.area}}</span>
@@ -109,9 +145,41 @@
 					h_time:'2019-02-03 12:40',
 					status:'已回单'
 				}]
-			}
-		})
 
+			}
+
+
+		});
+
+
+
+		new Vue({
+			el:'#app',
+		  data() {
+		    return {
+		      value: '',
+		      minDate: new Date(2018, 0, 1),
+		      currentDate: new Date(),
+		      showPicker: false,
+		      showdatePicker: false,
+		      columns: ['全部', '黄渡', '青浦', '嘉兴']
+		    }
+		  },
+		  methods: {
+		    onConfirm(value) {
+		      this.value = value;
+		      this.showPicker = false;
+		    },
+
+		    onConfirm2(value){
+		      // this.value = value;
+		      this.showdatePicker = false;
+
+		    }
+		  }
+
+
+		});
 
 
 

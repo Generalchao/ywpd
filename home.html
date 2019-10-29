@@ -4,45 +4,85 @@
 	<title>嘉定公安智能监控运维派单系统</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
-	<link rel="stylesheet" type="text/css" href="css/weui.css">
-	<link rel="stylesheet" type="text/css" href="css/weui2.css">
+	<!-- 引入样式文件 -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vant@2.2/lib/index.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<script src="js/zepto.min.js"></script>
-	<script src="js/zepto.weui.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+	<!-- 引入 Vue 和 Vant 的 JS 文件 -->
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vant@2.2/lib/vant.min.js"></script>
 </head>
 <body>
-	<header class="home_top_bar">
-		<a class="left_btn" id="menuBtn"><i class="icon-menu"></i></a>
+	<header class="home_top_bar" id="app">
+		<a class="left_btn" id="menuBtn" @click="show = true"><i class="icon-menu"></i></a>
 		<input class="search" type="" name="" placeholder="请输入工单号、设备名称、杆号">
 		<a href="" class="search_btn">搜索</a>
 		<div class="filter_box">
 			<div class="cell">
-                <input id="yw_type" type="text" value="" placeholder="所属镇">
+				<van-field
+					readonly
+					clickable
+					:value="value"
+					placeholder="所属镇"
+					@click="showPicker = true"
+				></van-field>
+				
                 <i class="icon-arrow_down"></i>
             </div>
+
 			<div class="cell">
-                <input id="yw_status" type="text" value="" placeholder="工单状态">
+				<van-field
+					readonly
+					clickable
+					:value="value"
+					placeholder="工单状态"
+					@click="showPicker2 = true"
+				></van-field>
+				
                 <i class="icon-arrow_down"></i>
             </div>
+
+            <van-popup v-model="showPicker" position="bottom">
+				<van-picker
+					show-toolbar
+					:columns="columns"
+					@cancel="showPicker = false"
+					@confirm="onConfirm"
+				/>
+			</van-popup>
+
+
+            <van-popup v-model="showPicker2" position="bottom">
+				<van-picker
+					show-toolbar
+					:columns="columns2"
+					@cancel="showPicker2 = false"
+					@confirm="onConfirm2"
+				/>
+			</van-popup>
+
         </div>
+
+
+		<!-- 侧边菜单 -->
+		<van-popup v-model="show" position="left" class="left_menu" >
+			<div class="user_info">
+				<div class="user_avatar" style="background-image: url('img/avatar.png')"></div>
+				<div class="user_name">王伟</div>
+			</div>
+			<ul class="menu_list">
+				<li><i class="icon-history"></i>历史工单</li>
+				<li><i class="icon-settings"></i>设置</li>
+			</ul>
+
+		</van-popup>
+
+
 	</header>
 
-	<!-- 侧边菜单 -->
-	<div class="left_menu" id="menu">
-		<div class="user_info">
-			<div class="user_avatar" style="background-image: url('img/avatar.png')"></div>
-			<div class="user_name">王伟</div>
-		</div>
-		<ul class="menu_list">
-			<li><i class="icon-history"></i>历史工单</li>
-			<li><i class="icon-settings"></i>设置</li>
-		</ul>
-	</div>
-	<div class="menu_mask" id="mask"></div>
 
 
-	<div class="content_box home" id="orderList">
+	<div class="content_box" id="orderList">
 		<div class="item" v-for="item in orderList">
 			<div class="titlebox">
 				<span class="area">{{item.area}}</span>
@@ -117,39 +157,38 @@
 					status:'待处理'
 				}]
 			}
-		})
+		});
 
 
-		 $("#yw_type").picker({
-	        title: "请选择设备类型",
-	        cols: [
-	            {
-	                textAlign: 'center',
-	                values: ['全部','摄像机','立杆','服务器','交换机','管道']
-	            }
-	        ],
-	        onChange: function(p, v, dv) {
-	            console.log(p, v, dv);
-	        },
-	        onClose: function(p, v, d) {
-	            console.log("close");
-	        }
-	    });
+		new Vue({
+			el:'#app',
+		  data() {
+		    return {
+			  show: false,
+		      value: '',
+		      showPicker: false,
+		      showPicker2: false,
+		      columns: ['全部', '黄渡', '青浦', '嘉兴'],
+		      columns2: ['全部','待处理','已分配','已完成','已回单'],
+		    }
+		  },
+		  methods: {
+		    onConfirm(value) {
+		      this.value = value;
+		      this.showPicker = false;
+		    },
+
+		    onConfirm2(value){
+		      this.value = value;
+		      this.showPicker2 = false;
+
+		    }
+		  }
 
 
-      var menuBtn = document.getElementById('menuBtn');
-      var menu = document.getElementById('menu');
-      var mask = document.getElementById('mask');
+		});
 
-      menuBtn.addEventListener('click',function(){
-      	menu.classList.add('show');
-      	mask.classList.add('show');
-      });
 
-      mask.addEventListener('click',function(){
-      	menu.classList.remove('show');
-      	mask.classList.remove('show');
-      });
 
 
 	</script>	
