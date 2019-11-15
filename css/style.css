@@ -45,10 +45,15 @@ a{color: var(--main-color)}
 .user_info{text-align: center;overflow: hidden;}
 .user_info .user_avatar{width: 70px;height: 70px;border-radius: 100%;margin: 80px 104px 10px 104px;background:#f5f5f5 no-repeat center/cover; }
 .user_info .user_name{font-size:18px ;color: #2F2F4D;font-weight: 500;}
-.menu_list{padding-top: 40px;text-align: left;}
+.data_board{display: flex;padding-top: 20px;}
+.data_board .item{flex: 1;text-align: center;font-size: 14px;color: #999;}
+.data_board .item span{display: block;font-size: 18px;color: #333;line-height: 26px;}
+.menu_list{padding-top: 30px;text-align: left;}
 .menu_list li{line-height: 48px;font-size: 14px;padding-left: 30px;color: #2F2F4D;cursor: pointer;}
 .menu_list li:active{background-color: #f2f2f2;}
 .menu_list li i{font-size: 24px;padding-right: 12px;vertical-align: middle;}
+.logout{position: absolute;bottom: 25px;left: 25px;right: 25px;}
+.logout button{width: 100%;}
 /*工单详情*/
 .content_box .group_title{font-size: 16px;font-weight: 500;padding: 20px 30px 0;margin-bottom: -10px;}
 .content_box .group{background-color: #fff;border-radius: 4px;margin:20px 20px 0; box-shadow: 0 2px 4px 0 rgba(0,0,0,.05);font-size: 14px;color: #333;overflow: hidden;}
