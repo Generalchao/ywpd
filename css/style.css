@@ -69,11 +69,22 @@ a{color: var(--main-color)}
 .content_box .group .row:after{position: absolute;right: 20px;bottom: 0;left: 20px;height: 1px;content: '';-webkit-transform: scaleY(.5);transform: scaleY(.5);background-color: #EAEAEA;}
 .content_box .group .row label{width: 80px;padding:14px 20px ;font-weight: 300;opacity: .8;}
 .content_box .group .row .value{padding: 14px 20px 14px 0;font-weight: 400;flex: 1;position: relative;}
-.content_box .group .row .map:after{font-family: 'operations' !important;position: absolute;content: '\e903';right:20px;vertical-align: middle;font-size: 16px;color: var(--main-color);}
+.content_box .group .row .map:after{font-family: 'operations' !important;position: absolute;content: '\e904';right:20px;vertical-align: middle;font-size: 16px;color: var(--main-color);}
 .content_box .toolbar{position: fixed;bottom:0;left: 0;right: 0;display: flex;z-index: 998;background-color: #fff;text-align: center;box-shadow: 0 -2px 6px rgba(233, 233, 233, 0.37)}
 .content_box .toolbar a{color: var(--main-color);line-height: 50px;flex: 1;font-size: 17px;position: relative;font-weight: 500;}
 .content_box .toolbar a:first-child:before{position: absolute;content: '';right: 0;top:10px ;bottom: 10px;width: 1px;color: #EAEAEA;}
 .grade_btn:after{border:none;}
+
+.content_box .cell{background-color: #fff;color: var(--primary-dark);border-radius: 4px;box-shadow: 0 2px 4px 0 rgba(0,0,0,.05);margin: 15px 15px 0;position: relative;overflow: hidden;}
+.content_box .cell .row{position: relative;font-size: 16px;color: #2F2F4D;display: flex;}
+.content_box .cell .row:after{position: absolute;right: 20px;bottom: 0;left: 20px;height: 1px;content: '';-webkit-transform: scaleY(.5);transform: scaleY(.5);background-color: #EAEAEA;}
+.content_box .cell .row label{width: 80px;padding:14px 20px ;font-weight: 300;opacity: .8;}
+.content_box .cell .row .value{padding: 14px 20px 14px 0;font-weight: 400;flex: 1;position: relative;}
+.content_box .cell .row .img_box{flex: 1;padding: 15px 0;}
+.content_box .cell .row .img_box .image{display: inline-block;font-size: 0;}
+.content_box .cell .row .img_box .image img{object-fit: cover;width: calc((100vw - 190px)/3);height:calc((100vw - 190px)/3); }
+
+
 
 /* 指派 */
 .content_box .item .assign_id{font-size: 16px;line-height: 22px;}

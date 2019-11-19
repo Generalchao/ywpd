@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>历史回单</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+	<!-- 引入样式文件 -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vant@2.2/lib/index.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+	<!-- 引入 Vue 和 Vant 的 JS 文件 -->
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vant@2.2/lib/vant.min.js"></script>
+</head>
+<body>
+	<header class="top_bar">
+		<h1 class="top_title">历史回单</h1>
+		<a class="left_btn" @click="$router.back(-1)"><i class="icon-back"></i></a>
+	</header>
+
+
+	<div class="content_box" id="orderList">
+		<div class="cell" v-for="item in orderList">
+			<div class="row">
+				<label>回单人</label>
+				<span class="value">张三</span>
+			</div>
+			<div class="row">
+				<label>联系方式</label>
+				<span class="value">18638888888</span>
+			</div>
+			<div class="row">
+				<label>回单时间</label>
+				<span class="value">2019-11-06 14:12</span>
+			</div>
+			<div class="row">
+				<label>故障原因</label>
+				<span class="value">断电，设备故障</span>
+			</div>
+			<div class="row">
+				<label>处理状态</label>
+				<span class="value">未修复</span>
+			</div>
+			<div class="row">
+				<label>回单描述</label>
+				<span class="value">无</span>
+			</div>
+			<div class="row">
+				<label>回单图片</label>
+				<div class="img_box">
+					<div class="image"><img src="img/img1.jpg"></div>
+					<div class="image"><img src="img/img2.jpg"></div>
+					<div class="image"><img src="img/img3.jpg"></div>
+				</div>
+			</div>
+		</div> 		 
+	</div>   
+
+	<script type="text/javascript">
+
+		var app = new Vue({
+			el: '#orderList',
+			data: {
+				orderList:[{
+					area:'黄渡',
+					title:'6306736723黄渡 春意路118弄口 西HGFGGVHJK',
+					ip:'15.202.140.172',
+					error_type:'摄像头离线',
+					equ:'摄像机',
+					number:'271',
+					person:'张三',
+					id:'408288142',
+					phone:'18515154675',
+					time:'10小时3分钟',
+					p_time:'2019-02-03 12:20',
+					h_time:'2019-02-03 12:40',
+					status:'已回单'
+				}, {
+					area:'黄渡',
+					title:'6306736723黄渡 春意路118弄口',
+					ip:'15.202.140.172',
+					error_type:'摄像头离线',
+					equ:'摄像机',
+					number:'271',
+					person:'张三',
+					id:'408288142',
+					phone:'18515154675',
+					time:'10小时3分钟',
+					p_time:'2019-02-03 12:20',
+					h_time:'2019-02-03 12:40',
+					status:'已回单'
+				}, {
+					area:'黄渡',
+					title:'6306736723黄渡 春意路118弄口',
+					ip:'15.202.140.172',
+					error_type:'摄像头离线',
+					equ:'摄像机',
+					number:'271',
+					person:'张三',
+					id:'408288142',
+					phone:'18515154675',
+					time:'10小时3分钟',
+					p_time:'2019-02-03 12:20',
+					h_time:'2019-02-03 12:40',
+					status:'已回单'
+				}]
+
+			}
+
+
+		});
+
+
+
+
+
+
+
+	</script>	
+</body>
+</html>
