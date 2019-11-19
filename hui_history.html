@@ -23,27 +23,27 @@
 		<div class="cell" v-for="item in orderList">
 			<div class="row">
 				<label>回单人</label>
-				<span class="value">张三</span>
+				<span class="value">{{item.person}}</span>
 			</div>
 			<div class="row">
 				<label>联系方式</label>
-				<span class="value">18638888888</span>
+				<span class="value">{{item.phone}}</span>
 			</div>
 			<div class="row">
 				<label>回单时间</label>
-				<span class="value">2019-11-06 14:12</span>
+				<span class="value">{{item.time}}</span>
 			</div>
 			<div class="row">
 				<label>故障原因</label>
-				<span class="value">断电，设备故障</span>
+				<span class="value">{{item.reason}}</span>
 			</div>
 			<div class="row">
 				<label>处理状态</label>
-				<span class="value">未修复</span>
+				<span class="value">{{item.status}}</span>
 			</div>
 			<div class="row">
 				<label>回单描述</label>
-				<span class="value">无</span>
+				<span class="value">{{item.desc}}</span>
 			</div>
 			<div class="row">
 				<label>回单图片</label>
@@ -62,47 +62,26 @@
 			el: '#orderList',
 			data: {
 				orderList:[{
-					area:'黄渡',
-					title:'6306736723黄渡 春意路118弄口 西HGFGGVHJK',
-					ip:'15.202.140.172',
-					error_type:'摄像头离线',
-					equ:'摄像机',
-					number:'271',
 					person:'张三',
-					id:'408288142',
-					phone:'18515154675',
-					time:'10小时3分钟',
-					p_time:'2019-02-03 12:20',
-					h_time:'2019-02-03 12:40',
-					status:'已回单'
-				}, {
-					area:'黄渡',
-					title:'6306736723黄渡 春意路118弄口',
-					ip:'15.202.140.172',
-					error_type:'摄像头离线',
-					equ:'摄像机',
-					number:'271',
-					person:'张三',
-					id:'408288142',
-					phone:'18515154675',
-					time:'10小时3分钟',
-					p_time:'2019-02-03 12:20',
-					h_time:'2019-02-03 12:40',
-					status:'已回单'
-				}, {
-					area:'黄渡',
-					title:'6306736723黄渡 春意路118弄口',
-					ip:'15.202.140.172',
-					error_type:'摄像头离线',
-					equ:'摄像机',
-					number:'271',
-					person:'张三',
-					id:'408288142',
-					phone:'18515154675',
-					time:'10小时3分钟',
-					p_time:'2019-02-03 12:20',
-					h_time:'2019-02-03 12:40',
-					status:'已回单'
+					phone:'18688888888',
+					time:'2019-11-06 14:12',
+					reason:'断电，设备故障',
+					status:'未修复',
+					desc:'无'
+				},{
+					person:'李四',
+					phone:'16666666666',
+					time:'2019-11-06 14:12',
+					reason:'断电，设备故障',
+					status:'已修复',
+					desc:'无'
+				},{
+					person:'王五',
+					phone:'16666666666',
+					time:'2019-11-06 14:12',
+					reason:'断电，设备故障',
+					status:'已修复',
+					desc:'无'
 				}]
 
 			}
