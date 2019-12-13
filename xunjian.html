@@ -40,7 +40,6 @@
 
 			<div class="cell">
 				<van-field
-					v-model="value"
 					placeholder="请输入杆号"
 				></van-field>
             </div>
@@ -49,7 +48,7 @@
 				<van-field
 					readonly
 					clickable
-					:value="value"
+					:value="value2"
 					placeholder="排序方式"
 					@click="showdatePicker = true"
 				></van-field>
@@ -131,6 +130,7 @@
 		  data() {
 		    return {
 		      value: '',
+		      value2: '',
 		      showPicker: false,
 		      showdatePicker: false,
 		      columns: ['全部', '黄渡', '青浦', '嘉兴'],     
@@ -144,7 +144,7 @@
 		    },
 
 		    onConfirm2(value){
-		      this.value = value;
+		      this.value2 = value;
 		      this.showdatePicker = false;
 
 		    }
