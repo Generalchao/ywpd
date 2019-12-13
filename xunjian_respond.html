@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>巡检回单</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+	<!-- 引入样式文件 -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vant@2.2/lib/index.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+	<!-- 引入 Vue 和 Vant 的 JS 文件 -->
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vant@2.2/lib/vant.min.js"></script>
+</head>
+<body>
+	<header class="top_bar">
+		<h1 class="top_title">巡检回单</h1>
+		<a class="left_btn" href=""><i class="icon-back"></i></a>
+	</header>
+
+	<div class="content_box" id="app">
+		<div class="group">
+			<div class="row two">
+				<label>现场图像</label>
+				<van-uploader v-model="fileList" multiple />
+			</div>
+		</div>
+
+		<div class="group">
+				<van-field
+					readonly
+					clickable
+					label="监控杆"
+					:value="value"
+					placeholder="请选择巡检结果"
+					@click="showPicker = true"
+				></van-field>
+				<van-field
+					readonly
+					clickable
+					label="智能箱"
+					:value="value2"
+					placeholder="请选择巡检结果"
+					@click="showPicker2 = true"
+				></van-field>
+				<van-field
+					readonly
+					clickable
+					label="WIFI嗅探"
+					:value="value3"
+					placeholder="请选择巡检结果"
+					@click="showPicker3 = true"
+				></van-field>
+				<van-field
+					readonly
+					clickable
+					label="摄像机"
+					:value="value4"
+					placeholder="请选择巡检结果"
+					@click="showPicker4 = true"
+				></van-field>
+		</div>
+
+		<div class="group">
+			<div class="row two">
+				<label>描述</label>
+				<van-cell-group>
+				  <van-field
+				    v-model="message"
+				    rows="3"
+				    autosize
+				    type="textarea"
+				    placeholder="请在此处输入…"
+				  />
+				</van-cell-group>
+			</div>
+		</div>
+
+		<van-popup v-model="showPicker" position="bottom">
+				<van-picker
+					show-toolbar
+					:columns="columns"
+					@cancel="showPicker = false"
+					@confirm="onConfirm"
+				/>
+		</van-popup>
+		<van-popup v-model="showPicker2" position="bottom">
+				<van-picker
+					show-toolbar
+					:columns="columns2"
+					@cancel="showPicker2 = false"
+					@confirm="onConfirm2"
+				/>
+		</van-popup>
+		<van-popup v-model="showPicker3" position="bottom">
+				<van-picker
+					show-toolbar
+					:columns="columns3"
+					@cancel="showPicker3 = false"
+					@confirm="onConfirm3"
+				/>
+		</van-popup>
+		<van-popup v-model="showPicker4" position="bottom">
+				<van-picker
+					show-toolbar
+					:columns="columns4"
+					@cancel="showPicker4 = false"
+					@confirm="onConfirm4"
+				/>
+		</van-popup>
+
+
+
+
+	    <div class="activity_box">
+			<van-button type="primary" @click="onClickConfirm">提交</van-button>
+	    </div>  
+
+	</div>   	
+
+</body>
+
+<script>
+
+new Vue({
+	el:'#app',
+	data() {
+    return {
+      fileList: [
+        { url: 'https://img.yzcdn.cn/vant/leaf.jpg' },
+        // Uploader 根据文件后缀来判断是否为图片文件
+        // 如果图片 URL 中不包含类型信息，可以添加 isImage 标记来声明
+        { url: 'https://cloud-image', isImage: true }
+      ],
+      message:'',
+      show: false,
+      value: '',
+      value2:'',
+      value3:'',
+      value4:'',
+      showPicker: false,
+      showPicker2: false,
+      showPicker3: false,
+      showPicker4: false,
+      columns: ['无','倾斜', '基础破损', '表面破损'],
+      columns2: ['无','表面破损', '箱门损坏'],
+      columns3: ['无','丢失', '外观损坏'],
+      columns4: ['无','遮挡隐患'],
+    }
+  },
+
+  methods: {
+
+	onClickConfirm() {
+	      this.$dialog.confirm({
+	        title: '提示',
+	        message: '是否提交回单内容？'
+	      }).then(() => {
+	        // on confirm
+	      }).catch(() => {
+	        // on cancel
+	      });
+	  },
+	onConfirm(value) {
+	      this.value = value;
+	      this.showPicker = false;
+    },
+	onConfirm2(value) {
+	      this.value2 = value;
+	      this.showPicker2 = false;
+    },
+	onConfirm3(value) {
+	      this.value3 = value;
+	      this.showPicker3 = false;
+    },
+	onConfirm4(value) {
+	      this.value4 = value;
+	      this.showPicker4 = false;
+    },
+
+
+
+  }
+
+});
+</script>
+</html>

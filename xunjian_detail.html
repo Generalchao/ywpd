@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>监控杆详情</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+	<!-- 引入样式文件 -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vant@2.2/lib/index.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+	<!-- 引入 Vue 和 Vant 的 JS 文件 -->
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vant@2.2/lib/vant.min.js"></script>
+</head>
+<body>
+	<header class="top_bar">
+		<h1 class="top_title">监控杆详情</h1>
+		<a class="left_btn" href=""><i class="icon-back"></i></a>
+		<a href="" class="right_btn">历史巡检</a>
+	</header>
+
+	<div class="content_box" id="app">
+		<div class="group">
+			<div class="row">
+				<label>杆号</label>
+				<span class="value">24A</span>
+			</div>
+			<div class="row">
+				<label>运维组</label>
+				<span class="value">黄渡</span>
+			</div>
+			<div class="row">
+				<label>地址</label>
+				<a href="" class="value map">昌吉路预览二村转门</a>
+			</div>
+			<div class="row">
+				<label>巡检日期</label>
+				<span class="value">2019-10-20</span>
+			</div>
+			<div class="row">
+				<label>距离上次巡检时间</label>
+				<span class="value">47天</span>
+			</div>
+
+		</div>
+		<div class="toolbar">
+			<a  @click="onClickConfirm">巡检签到</a>
+		</div>
+ 
+	</div> 	
+</body>
+<script>
+
+new Vue({
+	el:'#app',
+	data() {
+    return {
+      fileList: [
+        { url: 'https://img.yzcdn.cn/vant/leaf.jpg' },
+        // Uploader 根据文件后缀来判断是否为图片文件
+        // 如果图片 URL 中不包含类型信息，可以添加 isImage 标记来声明
+        { url: 'https://cloud-image', isImage: true }
+      ],
+      message:''
+    }
+  },
+
+  methods: {
+
+	onClickConfirm() {
+	      this.$dialog.confirm({
+	        title: '提示',
+	        message: '请确认当前点到位置有效，距离过远可能导致签到无效！'
+	      }).then(() => {
+	        // on confirm
+	      }).catch(() => {
+	        // on cancel
+	      });
+	  },
+
+  }
+
+});
+</script>
+</html>

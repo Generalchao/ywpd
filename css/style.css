@@ -30,6 +30,8 @@ a{color: var(--main-color)}
 .van-button--primary.van-button .van-button__text{font-size: 17px;color: #fff;}
 /*工单列表*/
 .content_box .item{background-color: #fff;color: var(--primary-dark);border-radius: 4px;box-shadow: 0 2px 4px 0 rgba(0,0,0,.05);padding:14px 20px;margin: 15px 15px 0;position: relative;overflow: hidden;}
+.content_box .item.b{background-color: #fbefdd;border: 1px solid #f5d7ae;}
+.content_box .item.b .date{color: #ffa600;}
 .content_box .item:active{background-color: #f2f2f2;}
 .content_box .item .titlebox{display: flex;}
 .content_box .item .area{color: #fff;font-size: 14px;font-weight: bold;background-color: #FFA600;border-radius: 4px;padding: 1px 7px;line-height: 20px;display: inline;}
@@ -38,8 +40,9 @@ a{color: var(--main-color)}
 .content_box .item .equ_info .equ_tag{font-size: 12px;color: #666;font-weight: 300;background-color: #F8F8F8;border-radius: 4px;line-height: 18px;padding: 2px 6px;display: inline-block;margin-right: 6px;}
 .content_box .item .contact{background-color: #B2E5FF;border-radius: 4px;color:#666 ;font-size: 12px;display: inline-block;padding: 2px 6px;margin-top: 10px;font-weight: 300;line-height: 18px;}
 .content_box .item .history_id{color: #F0454C;position: absolute;right: 20px;top: 80px;font-size: 14px;line-height: 20px;}
-.content_box .item .time{font-size: 13px;color: #666;display: block;margin-top: 10px;line-height: 18px;font-weight: 300;}
-.content_box .item .status{position: absolute;bottom: 10px;right: 15px;font-size: 13px;color: #666;}
+.content_box .item .time, .content_box .item .address{font-size: 13px;color: #666;display: block;margin-top: 10px;line-height: 18px;font-weight: 300;}
+.content_box .item .status, .content_box .item .date{position: absolute;bottom: 10px;right: 15px;font-size: 13px;color: #666;}
+
 /* 侧边菜单 */
 .left_menu{width: 278px;background:#fff url('../img/menu_bg.svg') no-repeat 100% top; height: 100%;}
 .user_info{text-align: center;overflow: hidden;}

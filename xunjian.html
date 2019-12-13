@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>外场巡检</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+	<!-- 引入样式文件 -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vant@2.2/lib/index.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+	<!-- 引入 Vue 和 Vant 的 JS 文件 -->
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vant@2.2/lib/vant.min.js"></script>
+</head>
+<body>
+	<header class="home_top_bar" id="app">
+		<h1 class="top_title">外场巡检</h1>
+		<a class="left_btn" href=""><i class="icon-back"></i></a>
+		<div id="filter"></div>
+		<div class="filter_box">
+
+			<div class="cell">
+				<van-field
+					readonly
+					clickable
+					:value="value"
+					placeholder="运维组"
+					@click="showPicker = true"
+				></van-field>
+				<van-popup v-model="showPicker" position="bottom">
+				<van-picker
+					show-toolbar
+					:columns="columns"
+					@cancel="showPicker = false"
+					@confirm="onConfirm"
+				/>
+				</van-popup>
+                <i class="icon-arrow_down"></i>
+            </div>
+
+			<div class="cell">
+				<van-field
+					v-model="value"
+					placeholder="请输入杆号"
+				></van-field>
+            </div>
+
+			<div class="cell">
+				<van-field
+					readonly
+					clickable
+					:value="value"
+					placeholder="排序方式"
+					@click="showdatePicker = true"
+				></van-field>
+                <i class="icon-arrow_down"></i>
+            </div>            
+
+
+			<van-popup v-model="showdatePicker" position="bottom">
+			<van-picker
+				show-toolbar
+				:columns="columns2"
+				@cancel="showPicker = false"
+				@confirm="onConfirm2"
+			/>
+			</van-popup>
+
+        </div>
+	</header>
+
+
+	<div class="content_box" id="orderList">
+		<div class="item" v-for="item in orderList" v-bind:class="item.classA">
+			<div class="titlebox">
+				<span class="area">{{item.area}}</span>
+				<p class="listTitle">{{item.title}}</p>
+			</div>
+			<span class="address">{{item.address}}</span>
+			<span class="date">{{item.time}}天前</span>
+		</div> 		 
+	</div>   
+
+	<script type="text/javascript" src="js/picker.city.js" ></script>	
+	<script type="text/javascript">
+
+		var app = new Vue({
+			el: '#orderList',
+			data: {
+				orderList:[{
+					area:'黄渡',
+					title:'22A',
+					address:'春意路118弄口',
+					time:'47',
+					classA:'b'//添加class“b”突出展示超过30天的
+				}, {
+					area:'黄渡',
+					title:'24B',
+					address:'昌吉路预览二村转门',
+					time:'22',
+					classA:'a'
+				}, {
+					area:'黄渡',
+					title:'27C',
+					address:'春意路118弄口',
+					time:'20',
+					classA:'a'
+				}, {
+					area:'黄渡',
+					title:'27C',
+					address:'春意路118弄口',
+					time:'20',
+					classA:'a'
+				}, {
+					area:'黄渡',
+					title:'27C',
+					address:'春意路118弄口',
+					time:'20',
+					classA:'a'
+				}]
+
+			}
+
+
+		});
+
+
+
+		new Vue({
+			el:'#app',
+		  data() {
+		    return {
+		      value: '',
+		      showPicker: false,
+		      showdatePicker: false,
+		      columns: ['全部', '黄渡', '青浦', '嘉兴'],     
+		      columns2: ['巡检时间']
+		    }
+		  },
+		  methods: {
+		    onConfirm(value) {
+		      this.value = value;
+		      this.showPicker = false;
+		    },
+
+		    onConfirm2(value){
+		      this.value = value;
+		      this.showdatePicker = false;
+
+		    }
+		  }
+
+
+		});
+
+
+
+
+
+	</script>	
+</body>
+</html>

@@ -34,7 +34,7 @@
 				<van-field
 					readonly
 					clickable
-					:value="value"
+					:value="value2"
 					placeholder="工单状态"
 					@click="showPicker2 = true"
 				></van-field>
@@ -176,6 +176,7 @@
 		    return {
 			  show: false,
 		      value: '',
+		      value2:'',
 		      showPicker: false,
 		      showPicker2: false,
 		      columns: ['全部', '黄渡', '青浦', '嘉兴'],
@@ -189,7 +190,7 @@
 		    },
 
 		    onConfirm2(value){
-		      this.value = value;
+		      this.value2 = value;
 		      this.showPicker2 = false;
 
 		    }
