@@ -5,12 +5,13 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
 	<!-- 引入样式文件 -->
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vant@2.2/lib/index.css">
+	<link rel="stylesheet"href="https://cdn.jsdelivr.net/npm/vant@2.12/lib/index.css"/>
+
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 
 	<!-- 引入 Vue 和 Vant 的 JS 文件 -->
-	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/vant@2.2/lib/vant.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6/dist/vue.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vant@2.12/lib/vant.min.js"></script>
 </head>
 <body>
 	<header class="top_bar">
@@ -23,6 +24,63 @@
 			<div class="row two">
 				<label>现场图像</label>
 				<van-uploader v-model="fileList" multiple />
+			</div>
+		</div>
+
+		<div class="group">
+				 <van-field
+					readonly
+					clickable
+					label="工单类型"
+					:value="value"
+					placeholder="请选择工单类型"
+					@click="showPicker = true"
+				></van-field> 
+				<van-field
+					readonly
+					clickable
+					label="处理状态"
+					:value="value2"
+					placeholder="请选择处理状态"
+					@click="showPicker2 = true"
+				></van-field>
+		</div>	
+
+		<div class="group">
+			<div class="row two">
+			<label>故障原因（多选）</label>
+			<van-collapse v-model="activeNames">
+			  <van-collapse-item title="设备被撞" name="1">
+
+			  	<van-checkbox-group v-model="result" direction="horizontal">
+				  <van-checkbox name="a">摄像机</van-checkbox>
+				  <van-checkbox name="b">智能箱</van-checkbox>
+				  <van-checkbox name="c">交换机</van-checkbox>
+				  <van-checkbox name="d">监控杆</van-checkbox>
+				</van-checkbox-group>
+
+			  </van-collapse-item>
+			  <van-collapse-item title="电源故障" name="2">
+
+			  	<van-checkbox-group v-model="result" direction="horizontal">
+				  <van-checkbox name="e">摄像机2</van-checkbox>
+				  <van-checkbox name="f">智能箱2</van-checkbox>
+				  <van-checkbox name="g">交换机2</van-checkbox>
+				  <van-checkbox name="h">监控杆2</van-checkbox>
+				</van-checkbox-group>
+
+			  </van-collapse-item>
+			  <van-collapse-item title="设备故障" name="3">
+
+			  	<van-checkbox-group v-model="result" direction="horizontal">
+				  <van-checkbox name="i">摄像机3</van-checkbox>
+				  <van-checkbox name="j">智能箱3</van-checkbox>
+				  <van-checkbox name="k">交换机3</van-checkbox>
+				  <van-checkbox name="l">监控杆3</van-checkbox>
+				</van-checkbox-group>
+
+			  </van-collapse-item>
+			</van-collapse>
 			</div>
 		</div>
 
@@ -41,10 +99,27 @@
 			</div>
 		</div>
 
-
 	    <div class="activity_box">
 			<van-button type="primary" @click="onClickConfirm">提交</van-button>
 	    </div>  
+
+		<van-popup v-model="showPicker" position="bottom">
+				<van-picker
+					show-toolbar
+					:columns="columns"
+					@cancel="showPicker = false"
+					@confirm="onConfirm"
+				/>
+		</van-popup>	
+
+		<van-popup v-model="showPicker2" position="bottom">
+				<van-picker
+					show-toolbar
+					:columns="columns2"
+					@cancel="showPicker2 = false"
+					@confirm="onConfirm2"
+				/>
+		</van-popup>	    
 
 	</div>   	
 
@@ -62,7 +137,16 @@ new Vue({
         // 如果图片 URL 中不包含类型信息，可以添加 isImage 标记来声明
         { url: 'https://cloud-image', isImage: true }
       ],
-      message:''
+      message:'',
+      show: false,
+      value: '',
+      value2: '',
+      showPicker: false,
+      showPicker2: false,
+      columns: ['一般工单','抢修工单', '特殊工单'],
+      columns2: ['状态1','状态2', '状态3'],
+      activeNames:['1'],
+      result:[],
     }
   },
 
@@ -78,6 +162,14 @@ new Vue({
 	        // on cancel
 	      });
 	  },
+	onConfirm(value) {
+	      this.value = value;
+	      this.showPicker = false;
+    },	
+	onConfirm2(value) {
+	      this.value2 = value;
+	      this.showPicker2 = false;
+    },	   
 
   }
 

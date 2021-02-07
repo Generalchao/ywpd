@@ -93,6 +93,7 @@ a{color: var(--main-color)}
 .content_box .item .assign_id{font-size: 16px;line-height: 22px;}
 .content_box .item .assign_name{position: absolute;right: 20px;top: 14px;font-size: 16px;}
 .content_box .item .assign_info{font-size: 14px;color: #2F2F4D;opacity: .5;font-weight: 300;line-height: 20px;margin-top: 10px;}
+.van-checkbox--horizontal{margin-bottom: 8px;margin-top:8px;}
 
 
 .password_form{padding-top: 30px;}
