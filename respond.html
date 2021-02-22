@@ -48,39 +48,52 @@
 
 		<div class="group">
 			<div class="row two">
-			<label>故障原因（多选）</label>
-			<van-collapse v-model="activeNames">
-			  <van-collapse-item title="设备被撞" name="1">
 
-			  	<van-checkbox-group v-model="result" direction="horizontal">
-				  <van-checkbox name="a">摄像机</van-checkbox>
-				  <van-checkbox name="b">智能箱</van-checkbox>
-				  <van-checkbox name="c">交换机</van-checkbox>
-				  <van-checkbox name="d">监控杆</van-checkbox>
-				</van-checkbox-group>
+			<van-collapse v-model="activeGroup">
+			  <van-collapse-item title="故障原因（多选）" name="1">
 
-			  </van-collapse-item>
-			  <van-collapse-item title="电源故障" name="2">
+			  	<van-collapse v-model="activeNames">
+				  <van-collapse-item title="设备被撞" name="1">
 
-			  	<van-checkbox-group v-model="result" direction="horizontal">
-				  <van-checkbox name="e">摄像机2</van-checkbox>
-				  <van-checkbox name="f">智能箱2</van-checkbox>
-				  <van-checkbox name="g">交换机2</van-checkbox>
-				  <van-checkbox name="h">监控杆2</van-checkbox>
-				</van-checkbox-group>
+				  	<van-checkbox-group v-model="result" direction="horizontal">
+					  <van-checkbox name="a">摄像机</van-checkbox>
+					  <van-checkbox name="b">智能箱</van-checkbox>
+					  <van-checkbox name="c">交换机</van-checkbox>
+					  <van-checkbox name="d">监控杆</van-checkbox>
+					</van-checkbox-group>
 
-			  </van-collapse-item>
-			  <van-collapse-item title="设备故障" name="3">
+				  </van-collapse-item>
+				  <van-collapse-item title="电源故障" name="2">
 
-			  	<van-checkbox-group v-model="result" direction="horizontal">
-				  <van-checkbox name="i">摄像机3</van-checkbox>
-				  <van-checkbox name="j">智能箱3</van-checkbox>
-				  <van-checkbox name="k">交换机3</van-checkbox>
-				  <van-checkbox name="l">监控杆3</van-checkbox>
-				</van-checkbox-group>
+				  	<van-checkbox-group v-model="result" direction="horizontal">
+					  <van-checkbox name="e">摄像机2</van-checkbox>
+					  <van-checkbox name="f">智能箱2</van-checkbox>
+					  <van-checkbox name="g">交换机2</van-checkbox>
+					  <van-checkbox name="h">监控杆2</van-checkbox>
+					</van-checkbox-group>
+
+				  </van-collapse-item>
+				  <van-collapse-item title="设备故障" name="3">
+
+				  	<van-checkbox-group v-model="result" direction="horizontal">
+					  <van-checkbox name="i">摄像机3</van-checkbox>
+					  <van-checkbox name="j">智能箱3</van-checkbox>
+					  <van-checkbox name="k">交换机3</van-checkbox>
+					  <van-checkbox name="l">监控杆3</van-checkbox>
+					</van-checkbox-group>
+
+				  </van-collapse-item>
+				</van-collapse>
+			  	
+
 
 			  </van-collapse-item>
 			</van-collapse>
+
+
+			
+
+
 			</div>
 		</div>
 
@@ -145,7 +158,8 @@ new Vue({
       showPicker2: false,
       columns: ['一般工单','抢修工单', '特殊工单'],
       columns2: ['状态1','状态2', '状态3'],
-      activeNames:['1'],
+      activeGroup:[''],
+      activeNames:[''],
       result:[],
     }
   },
